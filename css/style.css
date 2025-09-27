@@ -13,9 +13,10 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 2rem;
 }
 
 /* Header Styles */
@@ -1987,10 +1988,10 @@ html {
 
 /* Accommodation Section Styles */
 .venue-full-container {
-    max-width: none;
-    width: 100%;
-    padding: 0 4rem;
-    margin: 0;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 2rem;
+    margin: 0 !important;
 }
 
 .accommodation-section {
@@ -1999,8 +2000,8 @@ html {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: none;
-    width: 100%;
+    max-width: none !important;
+    width: 100% !important;
 }
 
 .accommodation-section h3 {
@@ -2028,8 +2029,8 @@ html {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     margin-bottom: 1.5rem;
-    width: 100%;
-    max-width: none;
+    width: 100% !important;
+    max-width: none !important;
 }
 
 .hotels-list {
