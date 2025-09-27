@@ -701,9 +701,8 @@
                 <div class="accommodation-section">
                     <h3>Recommended Accommodation</h3>
                     <p>Here are some recommended hotels near KIOST for your convenience:</p>
-                    
-                    <div class="accommodation-layout">
-                        <div class="hotels-list">
+
+                    <div class="hotels-grid">
                             <div class="hotel-card">
                                 <div class="hotel-info">
                                     <h4>시타딘커넥트호텔 하리 부산 (Citadines Connect Haeundae Busan)</h4>
@@ -765,77 +764,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="location-map">
-                            <h4>Location Map</h4>
-                            <div class="map-container">
-                                <svg viewBox="0 0 400 300" class="venue-map">
-                                    <!-- Background -->
-                                    <rect width="400" height="300" fill="#f0f8ff" stroke="#ccc" stroke-width="1"/>
-                                    
-                                    <!-- Ocean area -->
-                                    <path d="M 0,250 Q 100,230 200,240 T 400,250 L 400,300 L 0,300 Z" fill="#87ceeb" opacity="0.7"/>
-                                    <text x="350" y="280" font-size="12" fill="#4682b4">바다 (Ocean)</text>
-                                    
-                                    <!-- Roads -->
-                                    <line x1="50" y1="200" x2="350" y2="200" stroke="#666" stroke-width="3"/>
-                                    <line x1="200" y1="50" x2="200" y2="250" stroke="#666" stroke-width="2"/>
-                                    
-                                    <!-- KIOST (Main location) -->
-                                    <circle cx="200" cy="200" r="8" fill="#2c5aa0"/>
-                                    <rect x="180" y="180" width="40" height="25" fill="#2c5aa0" rx="3"/>
-                                    <text x="200" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c5aa0">KIOST</text>
-                                    <text x="200" y="170" text-anchor="middle" font-size="10" fill="#666">Conference Venue</text>
-                                    
-                                    <!-- Citadines Connect (Very close) -->
-                                    <circle cx="170" cy="190" r="6" fill="#28a745"/>
-                                    <rect x="155" y="175" width="30" height="20" fill="#28a745" rx="2"/>
-                                    <text x="170" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#28a745">시타딘커넥트</text>
-                                    <text x="170" y="125" text-anchor="middle" font-size="10" fill="#666">750m (Walk 10min)</text>
-                                    
-                                    <!-- Lavals Hotel -->
-                                    <circle cx="120" cy="120" r="6" fill="#dc3545"/>
-                                    <rect x="105" y="105" width="30" height="20" fill="#dc3545" rx="2"/>
-                                    <text x="120" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#dc3545">라발스</text>
-                                    <text x="120" y="80" text-anchor="middle" font-size="10" fill="#666">5km (Bus 25min)</text>
-                                    
-                                    <!-- Hotel Adela -->
-                                    <circle cx="280" cy="120" r="6" fill="#fd7e14"/>
-                                    <rect x="265" y="105" width="30" height="20" fill="#fd7e14" rx="2"/>
-                                    <text x="280" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#fd7e14">호텔아델라</text>
-                                    <text x="280" y="80" text-anchor="middle" font-size="10" fill="#666">5km (Bus 25min)</text>
-                                    
-                                    <!-- Distance lines -->
-                                    <line x1="200" y1="200" x2="170" y2="190" stroke="#28a745" stroke-width="2" stroke-dasharray="3,3"/>
-                                    <line x1="200" y1="200" x2="120" y2="120" stroke="#dc3545" stroke-width="2" stroke-dasharray="3,3"/>
-                                    <line x1="200" y1="200" x2="280" y2="120" stroke="#fd7e14" stroke-width="2" stroke-dasharray="3,3"/>
-                                    
-                                    <!-- Legend -->
-                                    <rect x="10" y="10" width="150" height="80" fill="white" stroke="#ccc" stroke-width="1" rx="5"/>
-                                    <text x="20" y="30" font-size="12" font-weight="bold" fill="#333">Legend</text>
-                                    <circle cx="25" cy="45" r="4" fill="#2c5aa0"/>
-                                    <text x="35" y="50" font-size="10" fill="#333">KIOST (Conference Venue)</text>
-                                    <circle cx="25" cy="60" r="4" fill="#28a745"/>
-                                    <text x="35" y="65" font-size="10" fill="#333">시타딘커넥트 (750m)</text>
-                                    <circle cx="25" cy="75" r="4" fill="#dc3545"/>
-                                    <text x="35" y="80" font-size="10" fill="#333">라발스 & 호텔아델라 (5km)</text>
-                                    
-                                    <!-- North indicator -->
-                                    <g transform="translate(360,40)">
-                                        <circle cx="0" cy="0" r="15" fill="white" stroke="#333" stroke-width="1"/>
-                                        <path d="M 0,-10 L 5,5 L 0,2 L -5,5 Z" fill="#333"/>
-                                        <text x="0" y="35" text-anchor="middle" font-size="10" fill="#333">N</text>
-                                    </g>
-                                </svg>
-                            </div>
-                            <p class="map-note">* This is a simplified location map. Actual routes may vary.</p>
-                        </div>
                     </div>
 
                     <div class="accommodation-note">
-                        <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Transportation times may vary depending on traffic conditions and time of day. We recommend booking accommodations early as availability may be limited during the workshop period.</p>
+                        <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Transportation times may vary
+                            depending on traffic conditions and time of day. We recommend booking accommodations early
+                            as availability may be limited during the workshop period.</p>
                     </div>
                 </div>
             </div>
@@ -873,8 +807,9 @@
                 <div class="contact-method">
                     <h3>How to Contact Us</h3>
                     <div class="contact-instructions">
-                        <p>For any inquiries regarding the AWOC-JKWOC 2025 workshop, please contact us directly via email or phone:</p>
-                        
+                        <p>For any inquiries regarding the AWOC-JKWOC 2025 workshop, please contact us directly via
+                            email or phone:</p>
+
                         <div class="contact-highlight">
                             <div class="contact-method-item">
                                 <i class="fas fa-envelope"></i>
@@ -891,7 +826,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
