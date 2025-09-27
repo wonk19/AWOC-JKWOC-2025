@@ -400,141 +400,88 @@
             <h2 class="section-title">Abstract Submission</h2>
             <div class="abstract-content">
                 <div class="abstract-info">
-                    <div class="abstract-guidelines">
-                        <h3>Submission Guidelines</h3>
-                        <div class="guideline-item">
-                            <h4><i class="fas fa-calendar-check"></i> Important Dates</h4>
-                            <ul>
-                                <li><strong>Abstract Submission Deadline:</strong> October 15, 2025</li>
-                                <li><strong>Notification of Acceptance:</strong> October 30, 2025</li>
-                                <li><strong>Final Program Release:</strong> November 5, 2025</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="guideline-item">
-                            <h4><i class="fas fa-file-alt"></i> Format Requirements</h4>
-                            <ul>
-                                <li><strong>Length:</strong> Maximum 500 words</li>
-                                <li><strong>Language:</strong> English</li>
-                                <li><strong>Format:</strong> Plain text or Word document</li>
-                                <li><strong>Font:</strong> Times New Roman, 12pt</li>
-                                <li><strong>Figures:</strong> Maximum 2 figures/tables allowed</li>
-                            </ul>
-                        </div>
-
-                        <div class="guideline-item">
-                            <h4><i class="fas fa-list"></i> Abstract Structure</h4>
-                            <ul>
-                                <li><strong>Title:</strong> Clear and concise (maximum 20 words)</li>
-                                <li><strong>Authors:</strong> Full names and affiliations</li>
-                                <li><strong>Introduction:</strong> Background and objectives</li>
-                                <li><strong>Methods:</strong> Brief methodology description</li>
-                                <li><strong>Results:</strong> Key findings</li>
-                                <li><strong>Conclusions:</strong> Main conclusions and implications</li>
-                            </ul>
-                        </div>
-
-                        <div class="guideline-item">
-                            <h4><i class="fas fa-tags"></i> Research Topics</h4>
-                            <ul>
-                                <li>Ocean color remote sensing algorithms</li>
-                                <li>Phytoplankton ecology and biogeochemistry</li>
-                                <li>Coastal and inland water studies</li>
-                                <li>AI and machine learning applications</li>
-                                <li>Satellite data validation and calibration</li>
-                                <li>Climate change and ocean color</li>
-                                <li>Hyperspectral ocean color research</li>
-                            </ul>
+                    <div class="deadline-notice">
+                        <h3><i class="fas fa-calendar-times"></i> Important Notice</h3>
+                        <div class="deadline-box">
+                            <h4>Abstract Submission Deadline</h4>
+                            <p class="deadline-date">October 10, 2025</p>
+                            <p>All abstracts must be submitted by this date for consideration.</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="abstract-submission">
-                    <h3>Submit Your Abstract</h3>
-                    <div class="submission-form">
-                        <form id="abstractForm">
-                            <div class="form-group">
-                                <label for="abstractTitle">Abstract Title *</label>
-                                <input type="text" id="abstractTitle" name="title" required maxlength="200">
-                                <small>Maximum 20 words</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="presentingAuthor">Presenting Author *</label>
-                                <input type="text" id="presentingAuthor" name="presenting_author" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="authorEmail">Email Address *</label>
-                                <input type="email" id="authorEmail" name="email" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="authorAffiliation">Affiliation *</label>
-                                <input type="text" id="authorAffiliation" name="affiliation" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="coAuthors">Co-Authors</label>
-                                <textarea id="coAuthors" name="co_authors" rows="3" placeholder="List co-authors with their affiliations"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="researchTopic">Research Topic *</label>
-                                <select id="researchTopic" name="research_topic" required>
-                                    <option value="">Please select</option>
-                                    <option value="Ocean color remote sensing algorithms">Ocean color remote sensing algorithms</option>
-                                    <option value="Phytoplankton ecology and biogeochemistry">Phytoplankton ecology and biogeochemistry</option>
-                                    <option value="Coastal and inland water studies">Coastal and inland water studies</option>
-                                    <option value="AI and machine learning applications">AI and machine learning applications</option>
-                                    <option value="Satellite data validation and calibration">Satellite data validation and calibration</option>
-                                    <option value="Climate change and ocean color">Climate change and ocean color</option>
-                                    <option value="Hyperspectral ocean color research">Hyperspectral ocean color research</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="presentationType">Presentation Type *</label>
-                                <select id="presentationType" name="presentation_type" required>
-                                    <option value="">Please select</option>
-                                    <option value="Oral Presentation">Oral Presentation</option>
-                                    <option value="Poster Presentation">Poster Presentation</option>
-                                    <option value="Either">Either (No preference)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="abstractText">Abstract Text *</label>
-                                <textarea id="abstractText" name="abstract_text" rows="10" required maxlength="3000" placeholder="Enter your abstract (maximum 500 words)"></textarea>
-                                <small>Current word count: <span id="wordCount">0</span>/500 words</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="abstractFile">Upload Abstract File (Optional)</label>
-                                <input type="file" id="abstractFile" name="abstract_file" accept=".doc,.docx,.pdf,.txt">
-                                <small>Supported formats: DOC, DOCX, PDF, TXT (Max 5MB)</small>
-                            </div>
-
-                            <div class="form-group checkbox-group">
-                                <input type="checkbox" id="agreeTerms" name="agree_terms" required>
-                                <label for="agreeTerms">I agree that my abstract may be published in the workshop proceedings *</label>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Submit Abstract</button>
-                        </form>
+                    <div class="template-section">
+                        <h3><i class="fas fa-download"></i> Abstract Template</h3>
+                        <div class="template-download">
+                            <p>Please use the official abstract template for your submission:</p>
+                            <a href="JKWOC_AWOC_2025_abstract_template.docx" class="btn btn-template" download>
+                                <i class="fas fa-file-word"></i> Download Abstract Template
+                            </a>
+                            <small>Microsoft Word format (.docx)</small>
+                        </div>
                     </div>
 
-                    <div class="submission-info">
-                        <div class="info-box">
-                            <h4><i class="fas fa-info-circle"></i> Submission Information</h4>
-                            <p>All abstracts will be reviewed by the scientific committee. Authors will be notified of acceptance by email.</p>
-                            <p>Accepted abstracts will be included in the workshop proceedings and published on the conference website.</p>
+                    <div class="submission-instructions">
+                        <h3><i class="fas fa-envelope"></i> Submission Instructions</h3>
+                        <div class="instructions-content">
+                            <div class="instruction-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Download Template</h4>
+                                    <p>Download the abstract template using the link above and fill in your information.</p>
+                                </div>
+                            </div>
+
+                            <div class="instruction-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Complete Your Abstract</h4>
+                                    <p>Follow the template format and guidelines provided in the document.</p>
+                                </div>
+                            </div>
+
+                            <div class="instruction-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Email Submission</h4>
+                                    <p>Send your completed abstract to:</p>
+                                    <div class="email-box">
+                                        <strong><i class="fas fa-envelope"></i> awoc.organizer@outlook.com</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="instruction-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Specify Presentation Type</h4>
+                                    <p>In your email, please clearly indicate your presentation preference:</p>
+                                    <ul>
+                                        <li><strong>Oral Presentation</strong> - For spoken presentations during technical sessions</li>
+                                        <li><strong>Poster Presentation</strong> - For poster display and discussion sessions</li>
+                                    </ul>
+                                    <div class="note">
+                                        <p><i class="fas fa-info-circle"></i> <strong>Important:</strong> Please specify "Oral" or "Poster" in your email subject line or body.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="contact-box">
-                            <h4><i class="fas fa-envelope"></i> Questions?</h4>
-                            <p>For questions regarding abstract submission, please contact:</p>
+                    </div>
+
+                    <div class="submission-tips">
+                        <h3><i class="fas fa-lightbulb"></i> Submission Tips</h3>
+                        <ul>
+                            <li>Use a clear and descriptive email subject line (e.g., "Abstract Submission - Oral Presentation - [Your Name]")</li>
+                            <li>Attach your completed abstract file to the email</li>
+                            <li>Include your contact information in the email body</li>
+                            <li>Submit well before the deadline to avoid last-minute issues</li>
+                            <li>You will receive a confirmation email within 2 business days</li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3><i class="fas fa-question-circle"></i> Questions?</h3>
+                        <p>For any questions regarding abstract submission, please contact:</p>
+                        <div class="contact-details">
                             <p><strong>Email:</strong> awoc.organizer@outlook.com</p>
                             <p><strong>Phone:</strong> 051-510-2353</p>
                         </div>
