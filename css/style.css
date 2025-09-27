@@ -1845,7 +1845,229 @@ html {
     line-height: 1.8;
 }
 
-/* Mobile Responsive for Abstract Section */
+/* About Section Improved Styles */
+.about {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3rem 0;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-text {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #2c5aa0;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #28a745;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+}
+
+.stat-item h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+}
+
+.committee-content {
+    margin-top: 2rem;
+}
+
+.committee-content h3 {
+    color: #2c5aa0;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.committee-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #2c5aa0;
+}
+
+.committee-section h4 {
+    color: #2c5aa0;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+.committee-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.committee-member {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #28a745;
+}
+
+.member-info h5 {
+    color: #2c5aa0;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.member-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Tutorials Section Improved Styles */
+.tutorials {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3rem 0;
+}
+
+.tutorials-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tutorial-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #2c5aa0;
+    transition: transform 0.3s ease;
+}
+
+.tutorial-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tutorial-header {
+    margin-bottom: 1rem;
+}
+
+.tutorial-header h3 {
+    color: #2c5aa0;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.tutorial-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tutorial-meta span {
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.tutorial-meta span i {
+    color: #2c5aa0;
+}
+
+.tutorial-description p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.tutorial-details {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.tutorial-details h4 {
+    color: #2c5aa0;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.tutorial-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tutorial-details li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #555;
+    line-height: 1.5;
+}
+
+.tutorial-details li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Mobile Responsive for About, Tutorials, and Abstract Sections */
 @media (max-width: 768px) {
     .step-description {
         padding-left: 0;
@@ -1874,6 +2096,24 @@ html {
     }
     
     .contact-info {
+        padding: 1.2rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .committee-members {
+        grid-template-columns: 1fr;
+    }
+    
+    .tutorial-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .tutorial-item {
         padding: 1.2rem;
     }
 }
