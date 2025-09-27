@@ -1845,6 +1845,144 @@ html {
     line-height: 1.8;
 }
 
+/* Contact Method Styles */
+.contact-method {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-method h3 {
+    color: #2c5aa0;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-instructions p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contact-highlight {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border: 2px solid #2c5aa0;
+}
+
+.contact-method-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-method-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-method-item i {
+    color: #2c5aa0;
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.contact-method-item strong {
+    color: #2c5aa0;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.contact-method-item p {
+    margin: 0;
+    color: #555;
+}
+
+.contact-method-item a {
+    color: #2c5aa0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-method-item a:hover {
+    color: #1e3d72;
+    text-decoration: underline;
+}
+
+.response-info {
+    background: #e8f4fd;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border-left: 4px solid #17a2b8;
+}
+
+.response-info h4 {
+    color: #2c5aa0;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.response-info p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.inquiry-topics {
+    background: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.inquiry-topics h4 {
+    color: #2c5aa0;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inquiry-topics ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inquiry-topics li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #555;
+    line-height: 1.5;
+}
+
+.inquiry-topics li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
 /* About Section Improved Styles */
 .about {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);

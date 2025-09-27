@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initNavigation();
     initProgramTabs();
     initRegistrationForm();
-    initContactForm();
+    // initContactForm(); // Removed - now using direct contact methods
     initScrollAnimations();
     initMobileMenu();
     initAdminPanel();
@@ -131,29 +131,7 @@ function initRegistrationForm() {
     }
 }
 
-// Contact form functionality
-function initContactForm() {
-    const form = document.getElementById('contactForm');
-
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-
-            // Validate form
-            if (validateContactForm(data)) {
-                // Simulate form submission
-                showNotification('문의가 성공적으로 전송되었습니다!', 'success');
-                form.reset();
-            } else {
-                showNotification('모든 필수 항목을 입력해주세요.', 'error');
-            }
-        });
-    }
-}
+// Contact functionality (removed form, now using direct email/phone contact)
 
 // Form validation functions
 function validateRegistrationForm(data) {
@@ -298,23 +276,7 @@ function clearAllData() {
     }
 }
 
-function validateContactForm(data) {
-    const requiredFields = ['name', 'email', 'subject', 'message'];
-
-    for (let field of requiredFields) {
-        if (!data[field] || data[field].trim() === '') {
-            return false;
-        }
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        return false;
-    }
-
-    return true;
-}
+// Contact form validation removed (now using direct contact methods)
 
 // Notification system
 function showNotification(message, type = 'info') {
