@@ -832,6 +832,8 @@ section {
 /* Venue Section */
 .venue {
     background: #f8f9fa;
+    padding: 4rem 0;
+    width: 100%;
 }
 
 .venue-content {
@@ -1987,7 +1989,8 @@ html {
 .venue-full-container {
     max-width: none;
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 4rem;
+    margin: 0;
 }
 
 .accommodation-section {
@@ -2023,9 +2026,10 @@ html {
 .hotels-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     margin-bottom: 1.5rem;
     width: 100%;
+    max-width: none;
 }
 
 .hotels-list {
@@ -2414,11 +2418,11 @@ html {
     .hotel-card {
         padding: 1.2rem;
     }
-    
+
     .hotel-images-section {
         margin-top: 1rem;
     }
-    
+
     .hotel-image {
         height: 150px;
     }
