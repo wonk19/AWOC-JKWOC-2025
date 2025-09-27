@@ -2040,10 +2040,8 @@ html {
 }
 
 .hotel-row {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
     width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .hotel-card {
@@ -2053,7 +2051,6 @@ html {
     border-left: 4px solid #2c5aa0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1;
 }
 
 .hotel-card:hover {
@@ -2420,18 +2417,8 @@ html {
         padding: 1.2rem;
     }
 
-    .hotel-row {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
     .hotel-card {
         padding: 1.2rem;
-    }
-    
-    .hotel-image {
-        width: 100%;
-        height: 150px;
     }
 
     .detail-item {
