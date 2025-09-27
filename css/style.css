@@ -2012,11 +2012,17 @@ html {
     margin-bottom: 1.5rem;
 }
 
-.hotels-grid {
+.accommodation-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     margin-bottom: 1.5rem;
+}
+
+.hotels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
 .hotel-card {
@@ -2089,6 +2095,43 @@ html {
 .accommodation-note i {
     color: #17a2b8;
     margin-right: 0.5rem;
+}
+
+/* Location Map Styles */
+.location-map {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #2c5aa0;
+}
+
+.location-map h4 {
+    color: #2c5aa0;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.venue-map {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* About Section Improved Styles */
@@ -2370,9 +2413,9 @@ html {
         padding: 1.2rem;
     }
     
-    .hotels-grid {
+    .accommodation-layout {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     .hotel-card {
