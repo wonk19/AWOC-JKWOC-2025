@@ -833,8 +833,11 @@ section {
 /* Venue Section */
 .venue {
     background: #f8f9fa;
-    padding: 4rem 0;
-    width: 100%;
+    padding: 4rem 2rem;
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    box-sizing: border-box;
 }
 
 .venue-content {
