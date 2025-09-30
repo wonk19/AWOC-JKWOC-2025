@@ -219,7 +219,10 @@ function initAdminPanel() {
 
 function updateAdminStats() {
     const registrations = JSON.parse(localStorage.getItem('awoc_registrations') || '[]');
-    document.getElementById('totalRegistrations').textContent = registrations.length;
+    const totalElement = document.getElementById('totalRegistrations');
+    if (totalElement) {
+        totalElement.textContent = registrations.length;
+    }
 }
 
 function downloadSpreadsheet() {
