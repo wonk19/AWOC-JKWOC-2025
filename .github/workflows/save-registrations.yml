@@ -1,0 +1,51 @@
+name: Save Registration Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      registration_data:
+        description: 'Registration data JSON'
+        required: true
+        type: string
+
+jobs:
+  save-registration:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Save registration data
+      run: |
+        # Create data directory if it doesn't exist
+        mkdir -p data
+        
+        # Read current registrations or create empty array
+        if [ -f data/registrations.json ]; then
+          CURRENT_DATA=$(cat data/registrations.json)
+        else
+          CURRENT_DATA="[]"
+        fi
+        
+        # Parse and add new registration
+        echo '${{ github.event.inputs.registration_data }}' > temp_registration.json
+        
+        # Merge with existing data using jq
+        echo "$CURRENT_DATA" | jq '. + ['"$(cat temp_registration.json)"']' > data/registrations.json
+        
+        # Clean up
+        rm temp_registration.json
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/registrations.json
+        git commit -m "Add new registration: $(date '+%Y-%m-%d %H:%M:%S')" || exit 0
+        git push

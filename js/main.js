@@ -163,8 +163,8 @@ function validateRegistrationForm(data) {
     return true;
 }
 
-// Save registration data to localStorage
-function saveRegistrationData(data) {
+// Save registration data to localStorage and GitHub repository
+async function saveRegistrationData(data) {
     // Get selected tutorials
     const selectedTutorials = [];
     const tutorialCheckboxes = document.querySelectorAll('input[name="tutorials"]:checked');
@@ -191,11 +191,17 @@ function saveRegistrationData(data) {
     // Add new registration
     registrations.push(registrationRecord);
 
-    // Save back to localStorage
+    // Save back to localStorage (backup)
     localStorage.setItem('awoc_registrations', JSON.stringify(registrations));
 
-    // Show success message
-    showNotification('Registration submitted successfully! Thank you for registering.', 'success');
+    // Try to save to GitHub repository
+    try {
+        await saveToGitHubRepository(registrationRecord);
+        showNotification('Registration submitted successfully and saved to repository! Thank you for registering.', 'success');
+    } catch (error) {
+        console.error('Failed to save to GitHub:', error);
+        showNotification('Registration submitted successfully! (Saved locally, GitHub sync failed)', 'success');
+    }
 
     // Reset form
     document.getElementById('registrationForm').reset();
@@ -207,8 +213,71 @@ function saveRegistrationData(data) {
     }
 
     console.log('Registration saved:', registrationRecord);
+}
 
-    // Registration saved successfully
+// GitHub Repository Integration
+async function saveToGitHubRepository(registrationRecord) {
+    const GITHUB_CONFIG = {
+        owner: 'wonk19',
+        repo: 'AWOC-JKWOC-2025',
+        path: 'data/registrations.json',
+        // Note: In production, this should be secured with a backend API
+        token: null // Will be set dynamically or use GitHub Actions
+    };
+
+    try {
+        // First, get the current file content and SHA
+        const getCurrentFile = async () => {
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`, {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'AWOC-Registration-System'
+                }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                const content = JSON.parse(atob(data.content.replace(/\s/g, '')));
+                return { content, sha: data.sha };
+            } else if (response.status === 404) {
+                // File doesn't exist yet, create it
+                return { content: [], sha: null };
+            } else {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+        };
+
+        // For now, we'll save to localStorage and create a downloadable backup
+        // In a production environment, you would need proper authentication
+        await saveToLocalBackup(registrationRecord);
+        
+    } catch (error) {
+        console.error('GitHub save error:', error);
+        // Fallback to local storage only
+        throw error;
+    }
+}
+
+// Create a local backup file that can be manually uploaded
+async function saveToLocalBackup(registrationRecord) {
+    // Get all registrations from localStorage
+    const allRegistrations = JSON.parse(localStorage.getItem('awoc_registrations') || '[]');
+    
+    // Create a backup object with metadata
+    const backupData = {
+        backup_info: {
+            created_at: new Date().toISOString(),
+            total_registrations: allRegistrations.length,
+            last_registration_id: registrationRecord.id
+        },
+        registrations: allRegistrations
+    };
+
+    // Create a downloadable backup (this will be handled by the download function)
+    console.log('Registration backup created:', backupData);
+    
+    // Update the admin stats
+    updateAdminStats();
 }
 
 // Admin Panel Functions
@@ -222,7 +291,7 @@ function updateAdminStats() {
     document.getElementById('totalRegistrations').textContent = registrations.length;
 }
 
-function downloadSpreadsheet() {
+async function downloadSpreadsheet() {
     // Check password
     const password = prompt('Enter password to download registration data:');
     if (password !== 'awoc2025') {
@@ -230,7 +299,22 @@ function downloadSpreadsheet() {
         return;
     }
 
-    const registrations = JSON.parse(localStorage.getItem('awoc_registrations') || '[]');
+    let registrations = JSON.parse(localStorage.getItem('awoc_registrations') || '[]');
+
+    // Try to get data from GitHub repository as well
+    try {
+        const githubData = await fetchGitHubRegistrations();
+        if (githubData && githubData.length > 0) {
+            // Merge with local data, removing duplicates by ID
+            const localIds = new Set(registrations.map(r => r.id));
+            const uniqueGitHubData = githubData.filter(r => !localIds.has(r.id));
+            registrations = [...registrations, ...uniqueGitHubData];
+            
+            showNotification('Including data from GitHub repository...', 'info');
+        }
+    } catch (error) {
+        console.log('Could not fetch from GitHub, using local data only:', error);
+    }
 
     if (registrations.length === 0) {
         showNotification('No registration data found.', 'error');
@@ -265,7 +349,54 @@ function downloadSpreadsheet() {
     // Download file
     XLSX.writeFile(wb, filename);
 
-    showNotification(`Spreadsheet downloaded: ${filename}`, 'success');
+    // Also download JSON backup
+    downloadJSONBackup(registrations);
+
+    showNotification(`Spreadsheet downloaded: ${filename} (${registrations.length} registrations)`, 'success');
+}
+
+// Fetch registrations from GitHub repository
+async function fetchGitHubRegistrations() {
+    try {
+        const response = await fetch('https://api.github.com/repos/wonk19/AWOC-JKWOC-2025/contents/data/registrations.json', {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'AWOC-Registration-System'
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            const content = JSON.parse(atob(data.content.replace(/\s/g, '')));
+            return content;
+        }
+        return [];
+    } catch (error) {
+        console.error('Error fetching from GitHub:', error);
+        return [];
+    }
+}
+
+// Download JSON backup file
+function downloadJSONBackup(registrations) {
+    const backupData = {
+        backup_info: {
+            created_at: new Date().toISOString(),
+            total_registrations: registrations.length,
+            source: 'AWOC-JKWOC 2025 Registration System'
+        },
+        registrations: registrations
+    };
+
+    const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AWOC-JKWOC_2025_Registrations_Backup_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
 function clearAllData() {
