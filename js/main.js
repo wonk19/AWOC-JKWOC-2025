@@ -191,11 +191,20 @@ function saveRegistrationData(data) {
     // Add new registration
     registrations.push(registrationRecord);
 
-    // Save back to localStorage
+    // Save back to localStorage (backup)
     localStorage.setItem('awoc_registrations', JSON.stringify(registrations));
 
-    // Show success message
-    showNotification('Registration submitted successfully! Thank you for registering.', 'success');
+    // Try to save to Google Sheets
+    saveToGoogleSheets(registrationRecord).then(success => {
+        if (success) {
+            showNotification('Registration submitted successfully! Thank you for registering.', 'success');
+        } else {
+            showNotification('Registration submitted successfully! (Saved locally)', 'success');
+        }
+    }).catch(error => {
+        console.error('Failed to save to Google Sheets:', error);
+        showNotification('Registration submitted successfully! (Saved locally)', 'success');
+    });
 
     // Reset form
     document.getElementById('registrationForm').reset();
@@ -207,8 +216,33 @@ function saveRegistrationData(data) {
     }
 
     console.log('Registration saved:', registrationRecord);
+}
 
-    // Registration saved successfully
+// Google Sheets Integration
+async function saveToGoogleSheets(registrationRecord) {
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLU9YPrEitKkhyKsOC9buonJnOS8tlq58bnwkMBUffS1JdeyqxGLrkVExOhma8w014/exec';
+
+    try {
+        console.log('Saving to Google Sheets...');
+
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Important for Google Apps Script
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(registrationRecord)
+        });
+
+        // Note: no-cors mode means we can't read the response
+        // We'll assume success if no error is thrown
+        console.log('Registration sent to Google Sheets successfully!');
+        return true;
+
+    } catch (error) {
+        console.error('Google Sheets save error:', error);
+        return false;
+    }
 }
 
 // Admin Panel Functions
