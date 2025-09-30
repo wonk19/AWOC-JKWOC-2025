@@ -101,7 +101,8 @@ phytobloom_env/
 dmypy.json
 
 # Data files (too large for GitHub)
-data/
+data/*
+!data/registrations.json
 data_actually_used/
 results/
 *.bin
